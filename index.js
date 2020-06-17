@@ -15,7 +15,8 @@ inquirer
 
     // use response to get url data 
     .then(res => {
-        // const queryUrl = `https://api.github.com/users/${username}`;
+       const userName = res.username 
+        const queryUrl = `https://api.github.com/users/${userName}`;
 
         if (res) {
             console.log("Success!");
@@ -25,4 +26,11 @@ inquirer
           {
             console.log("You forgot to enter your User Name!");
           }
-        })
+
+          // make request with user name
+        axios.
+            get(queryUrl)
+            .then(function (response) {
+                console.log(response.data)
+            })
+    });
