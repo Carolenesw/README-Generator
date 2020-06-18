@@ -2,10 +2,14 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
+const util = require("util")
 
-// prompt user for required github information
-inquirer
-    .prompt([
+const writeFileAsyn = util.promisify(fs.writeFile)
+
+// prompt function to capture user data and github information
+userPrompt();
+function userPrompt() {
+    return inquirer.prompt([
         {
             type: "input",
             message: "Enter your GitHub username",
@@ -65,14 +69,14 @@ inquirer
 
     // use response to get url data 
     .then(res => {
-        const userName = res.username
+        const userName = res.username;
         const queryUrl = `https://api.github.com/users/${userName}`;
 
         if (res) {
             console.log("Success!");
             // this shows all information contain in the array/object 
             console.log(res)
-        } else if (res) {
+        } else if (res === "") {
             console.log("You forgot to enter your User Name!");
         }
 
@@ -103,4 +107,15 @@ inquirer
 
     //     module.exports = generateMarkdown;
 
+    // function writeToFile(fileName, data) {
+    // }
+    
+    // function init() {
+    
+    // }
+    
+    // init();
+    
+
     })
+}
