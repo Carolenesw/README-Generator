@@ -14,7 +14,7 @@ inquirer
         {
             type: "input",
             message: "Enter your Project Title",
-            name: "repo"
+            name: "title"
         },
         {
             type: "input",
@@ -65,24 +65,42 @@ inquirer
 
     // use response to get url data 
     .then(res => {
-       const userName = res.username 
+        const userName = res.username
         const queryUrl = `https://api.github.com/users/${userName}`;
 
         if (res) {
             console.log("Success!");
             // this shows all information contain in the array/object 
             console.log(res)
-          } else if (res.username === "" || res.repo === "")
-          {
+        } else if (res) {
             console.log("You forgot to enter your User Name!");
-          }
+        }
 
-          // make request with user name
+        // make request with user name
         axios.
             get(queryUrl)
             .then(function (response) {
                 console.log(response.data)
 
-            console.log(response.data.repos_url)
-            })
-    });
+                console.log(response.data.repos_url)
+                    
+                    })
+                    // catches and handle error
+                    .catch(function (error) {
+
+                        console.log(error);
+
+            });
+
+
+
+    //     function generateMarkdown(data) {
+    //         return `
+    //   # ${data.title}
+      
+    //   `;
+    //     }
+
+    //     module.exports = generateMarkdown;
+
+    })
