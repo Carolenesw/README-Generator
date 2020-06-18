@@ -99,18 +99,18 @@ function userPrompt() {
             console.log(res.title)
             function generateMarkdown(res) {
                 return `
-                    # ${res.title}
-                    
-                    # Table of Content
-
-                    # ${res.description}
-                    # ${res.content}
-                    # ${res.install}
-                    # ${res.license}
-                    # ${res.collab}
-                    # ${res.testing}
-                    # ${res.pic}
-                    # ${res.email}`;
+                    # Project Title: ${res.title}
+                    # Badge: 
+                
+                    # Description: ${res.description}
+                    # Table of Content: ${res.content}
+                    # Installaion: ${res.install}
+                    # Usage: ${res.usage}
+                    # License: ${res.license}
+                    # Contributing: ${res.collab}
+                    # Testing: ${res.testing}
+                    # Picture: ${res.pic}
+                    # Email: ${res.email}`;
 
             }
 
