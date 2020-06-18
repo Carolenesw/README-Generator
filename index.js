@@ -67,55 +67,78 @@ function userPrompt() {
         }
     ])
 
-    // use response to get url data 
-    .then(res => {
-        const userName = res.username;
-        const queryUrl = `https://api.github.com/users/${userName}`;
+        // use response to get url data 
+        .then(res => {
+            const userName = res.username;
+            const queryUrl = `https://api.github.com/users/${userName}`;
 
-        if (res) {
-            console.log("Success!");
-            // this shows all information contain in the array/object 
-            console.log(res)
-        } else if (res === "") {
-            console.log("You forgot to enter your User Name!");
-        }
+            if (res) {
+                console.log("Success!");
+                // this shows all information contain in the array/object 
+                console.log(res)
+            } else if (res === "") {
+                console.log("You forgot to enter your User Name!");
+            }
 
-        // make request with user name
-        axios.
-            get(queryUrl)
-            .then(function (response) {
-                console.log(response.data)
+            // make request with user name
+            axios.
+                get(queryUrl)
+                .then(function (response) {
+                    console.log(response.data)
 
-                console.log(response.data.repos_url)
+                    console.log(response.data.repos_url)
+
+                })
+                // catches and handle error
+                .catch(function (error) {
+
+                    console.log(error);
+
+                });
+
+            console.log(res.title)
+            function generateMarkdown(res) {
+                return `
+                    # ${res.title}
                     
-                    })
-                    // catches and handle error
-                    .catch(function (error) {
+                    # Table of Content
 
-                        console.log(error);
+                    # ${res.description}
+                    # ${res.content}
+                    # ${res.install}
+                    # ${res.license}
+                    # ${res.collab}
+                    # ${res.testing}
+                    # ${res.pic}
+                    # ${res.email}`;
 
-            });
+            }
+
+            console.log(res.email)
+
+            module.exports = generateMarkdown;
+
+            // console.log(generateMarkdown())
+            // function writeToFile(fileName, data) {
+            // }
+
+            // function init() {
+
+            // }
+
+            // init();
 
 
 
-    //     function generateMarkdown(data) {
-    //         return `
-    //   # ${data.title}
-      
-    //   `;
-    //     }
+            // function writeToFile(fileName, data) {
+            // }
 
-    //     module.exports = generateMarkdown;
+            // function init() {
 
-    // function writeToFile(fileName, data) {
-    // }
-    
-    // function init() {
-    
-    // }
-    
-    // init();
-    
+            // }
 
-    })
+            // init();
+
+
+        })
 }
