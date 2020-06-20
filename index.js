@@ -7,7 +7,7 @@ const util = require("util")
 const writeFileAsyn = util.promisify(fs.writeFile)
 
 // prompt function to capture user data and github information
-userPrompt();
+userPrompt()
 function userPrompt() {
     return inquirer.prompt([
         {
@@ -81,64 +81,81 @@ function userPrompt() {
             }
 
             // make request with user name
-            axios.
-                get(queryUrl)
-                .then(function (response) {
-                    console.log(response.data)
+            // axios.
+            //     get(queryUrl)
+            //     .then(function (response) {
+            //         console.log(response.data)
 
-                    console.log(response.data.repos_url)
+            //         console.log(response.data.repos_url)
 
-                })
-                // catches and handle error
-                .catch(function (error) {
+            //     })
+            //     // catches and handle error
+            //     .catch(function (error) {
 
-                    console.log(error);
+            //         console.log(error);
 
-                });
+            //     });
 
-            console.log(res.title)
+            console.log(`Project Title: ${res.title}`)
+
+            // module.exports = generateMarkdown;
+
+            // create function to generate answers based on user response
+            // console.log(generateMarkdown(res))
             function generateMarkdown(res) {
                 return `
-                    # Project Title: ${res.title}
-                    # Badge: 
-                
-                    # Description: ${res.description}
-                    # Table of Content: ${res.content}
-                    # Installaion: ${res.install}
-                    # Usage: ${res.usage}
-                    # License: ${res.license}
-                    # Contributing: ${res.collab}
-                    # Testing: ${res.testing}
-                    # Picture: ${res.pic}
-                    # Email: ${res.email}`;
+                # Project Title: ${res.title}
+                # Badge: 
+
+                # Description: ${res.description}
+                # Table of Content: ${res.content}
+                # Installaion: ${res.install}
+                # Usage: ${res.usage}
+                # License: ${res.license}
+                # Contributing: ${res.collab}
+                # Testing: ${res.testing}
+                # Picture: ${res.pic}
+                # Email: ${res.email}`;
 
             }
+            // create write file function to generate readme
+            // function writeToFile(readme, generateMarkdown) {
 
-            console.log(res.email)
-
-            module.exports = generateMarkdown;
-
-            // console.log(generateMarkdown())
-            // function writeToFile(fileName, data) {
+                const readMe = generateMarkdown(res);
+                fs.writeFile("README1.md", readMe, function(err) {
+                    if (err) {
+                        throw err;
+                    }
+                    console.log(readMe)
+                });
+                // await writeFileAsyn("README1.md", readMe);
             // }
-
-            // function init() {
-
-            // }
-
-            // init();
-
-
-
-            // function writeToFile(fileName, data) {
-            // }
-
-            // function init() {
-
-            // }
-
-            // init();
-
-
         })
-}
+
+
+
+
+};
+
+// create initialize function  
+// async function init() {
+//     console.log("How are you?")
+
+//     try {
+//         const res = await userPrompt();
+//         fs.writeFile()
+//         // const readMe = generateMarkdown(res);
+
+//         // await writeFileAsyn("README.md", readMe, text);
+
+//         console.log("Good job, you have successfully wrote to README.md!");
+
+//     }
+//     catch (error) {
+//         console.log(error);
+//     }
+// }
+
+
+// init();
+
