@@ -7,7 +7,7 @@ const util = require("util")
 const writeFileAsyn = util.promisify(fs.writeFile)
 
 // prompt function to capture user data and github information
-userPrompt()
+// userPrompt()
 function userPrompt() {
     return inquirer.prompt([
         {
@@ -118,15 +118,15 @@ function userPrompt() {
                 # Email: ${res.email}`;
 
             }
-            // create write file function to generate readme
+            // create write file function to generate readme file
             // function writeToFile(readme, generateMarkdown) {
 
                 const readMe = generateMarkdown(res);
-                fs.writeFile("README1.md", readMe, function(err) {
+                fs.writeFile("README2.md", readMe, function(err) {
                     if (err) {
                         throw err;
                     }
-                    console.log(readMe)
+                    console.log(`Congratulation, you have successfully generated your README.md file ${readMe}`)
                 });
                 // await writeFileAsyn("README1.md", readMe);
             // }
@@ -138,24 +138,17 @@ function userPrompt() {
 };
 
 // create initialize function  
-// async function init() {
-//     console.log("How are you?")
+async function init() {
+    console.log("How are you?")
 
-//     try {
-//         const res = await userPrompt();
-//         fs.writeFile()
-//         // const readMe = generateMarkdown(res);
-
-//         // await writeFileAsyn("README.md", readMe, text);
-
-//         console.log("Good job, you have successfully wrote to README.md!");
-
-//     }
-//     catch (error) {
-//         console.log(error);
-//     }
-// }
+    try {
+        const res = await userPrompt();
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
 
 
-// init();
+init();
 
