@@ -33,8 +33,9 @@ function userPrompt() {
         },
         {
             type: "input",
-            message: "Enter step-by-step installation instructions",
-            name: "install"
+            message: "What command should be run to install dependencies?",
+            name: "install",
+            default: "npm i"
         },
         {
             type: "input",
@@ -63,9 +64,9 @@ function userPrompt() {
             name: "pic"
         },
         {
-            type: "input",
-            message: "Enter your GitHub email",
-            name: "email"
+            // type: "input",
+            // message: "Enter your GitHub email",
+            // name: "email"
         }
     ])
 

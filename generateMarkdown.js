@@ -1,8 +1,10 @@
-
+const res = require('./index')
 
 // create function to generate answers based on user response
 // console.log(generateMarkdown(res))
 function generateMarkdown(res) {
+    // console.log(res)
+    // data.license= 
     return `
                 # Project Title: ${res.title}
                 ## Badge: 
@@ -10,7 +12,14 @@ function generateMarkdown(res) {
                 ## Description: 
                 * ${res.description}
                 ## Table of Content: 
-                * ${res.content}
+                
+                * [Installation](#installation)  
+                * [Usage](#usage)
+                * [License](#license)
+                * [Contributors](#contributors)
+                * [Tests](#tests)
+                * [Questions](#questions)
+
                 ## Installaion:
                 * ${res.install}
                 ## Usage: 
@@ -21,14 +30,12 @@ function generateMarkdown(res) {
                 * ${res.collab}
                 ## Testing: 
                 * ${res.testing}
-                ## Picture: 
-                * ${res.pic}
-                * response.data.avatar_url
-                ## Email: 
-                * ${res.email}
-                *  * response.data.email
+                ## Questions
+                If you have any questions, please contact the GitHub user.           
+                <img src="${res.avatar_url}">  
+                Email: ${res.email}
+        
                 `;
-
 };
 
 module.exports = generateMarkdown;
