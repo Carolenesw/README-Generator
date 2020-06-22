@@ -3,6 +3,7 @@ const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
 const util = require("util")
+const generateMarkdown = require("./generateMarkdown")
 
 const writeFileAsyn = util.promisify(fs.writeFile)
 
@@ -22,7 +23,7 @@ function userPrompt() {
         },
         {
             type: "input",
-            message: "Enter Project Description",
+            message: "Enter your Project Description",
             name: "description"
         },
         {
@@ -43,7 +44,8 @@ function userPrompt() {
         {
             type: "input",
             message: "Enter license instructions",
-            name: "license"
+            name: "license",
+            choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3"]
         },
         {
             type: "input",
@@ -81,48 +83,31 @@ function userPrompt() {
             }
 
             // make request with user name
-            // axios.
-            //     get(queryUrl)
-            //     .then(function (response) {
-            //         console.log(response.data)
+            axios.
+                get(queryUrl)
+                .then(function (response) {
+                    console.log(response.data)
 
-            //         console.log(response.data.repos_url)
+                    console.log(response.data.repos_url)
 
-            //     })
-            //     // catches and handle error
-            //     .catch(function (error) {
+                })
+                // catches and handle error
+                .catch(function (error) {
 
-            //         console.log(error);
+                    console.log(error);
 
-            //     });
+                });
 
-            console.log(`Project Title: ${res.title}`)
+            // console.log(`Project Title: ${res.title}`)
 
-            // module.exports = generateMarkdown;
+        
 
-            // create function to generate answers based on user response
-            // console.log(generateMarkdown(res))
-            function generateMarkdown(res) {
-                return `
-                # Project Title: ${res.title}
-                # Badge: 
-
-                # Description: ${res.description}
-                # Table of Content: ${res.content}
-                # Installaion: ${res.install}
-                # Usage: ${res.usage}
-                # License: ${res.license}
-                # Contributing: ${res.collab}
-                # Testing: ${res.testing}
-                # Picture: ${res.pic}
-                # Email: ${res.email}`;
-
-            }
+         
             // create write file function to generate readme file
             // function writeToFile(readme, generateMarkdown) {
 
                 const readMe = generateMarkdown(res);
-                fs.writeFile("README2.md", readMe, function(err) {
+                fs.writeFile("README3.md", readMe, function(err) {
                     if (err) {
                         throw err;
                     }
@@ -130,11 +115,7 @@ function userPrompt() {
                 });
                 // await writeFileAsyn("README1.md", readMe);
             // }
-        })
-
-
-
-
+        });
 };
 
 // create initialize function  
@@ -146,8 +127,8 @@ async function init() {
     }
     catch (error) {
         console.log(error);
-    }
-}
+    };
+};
 
 
 init();
