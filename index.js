@@ -1,14 +1,13 @@
-// npm packages
+// npm packages and files required 
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-const util = require("util")
+// const util1 = require("util")
 const generateMarkdown = require("./generateMarkdown")
 
-const writeFileAsyn = util.promisify(fs.writeFile)
+// const writeFileAsyn = util.promisify(fs.writeFile)
 
 // prompt function to capture user data and github information
-// userPrompt()
 function userPrompt() {
     return inquirer.prompt([
         {
@@ -26,11 +25,7 @@ function userPrompt() {
             message: "Enter your Project Description",
             name: "description"
         },
-        {
-            type: "input",
-            message: "Table of Content",
-            name: "content"
-        },
+        
         {
             type: "input",
             message: "What command should be run to install dependencies?",
@@ -57,17 +52,8 @@ function userPrompt() {
             type: "input",
             message: "Enter testing requirements",
             name: "testing"
-        },
-        {
-            type: "input",
-            message: "Enter your GitHub profile picture",
-            name: "pic"
-        },
-        {
-            // type: "input",
-            // message: "Enter your GitHub email",
-            // name: "email"
         }
+       
     ])
 
         // use response to get url data 
@@ -77,8 +63,7 @@ function userPrompt() {
 
             if (res) {
                 console.log("Success!");
-                // this shows all information contain in the array/object 
-                console.log(res)
+                // console.log(res)
             } else if (res === "") {
                 console.log("You forgot to enter your User Name!");
             }
@@ -89,7 +74,7 @@ function userPrompt() {
                 .then(function (response) {
                     console.log(response.data)
 
-                    console.log(response.data.repos_url)
+                    console.log(response.data.avatar_url)
 
                 })
                 // catches and handle error
@@ -97,25 +82,17 @@ function userPrompt() {
 
                     console.log(error);
 
-                });
-
-            // console.log(`Project Title: ${res.title}`)
-
-        
-
+                })
          
             // create write file function to generate readme file
-            // function writeToFile(readme, generateMarkdown) {
-
                 const readMe = generateMarkdown(res);
-                fs.writeFile("README3.md", readMe, function(err) {
+                fs.writeFile("README1.md", readMe, function(err) {
                     if (err) {
                         throw err;
                     }
                     console.log(`Congratulation, you have successfully generated your README.md file ${readMe}`)
                 });
-                // await writeFileAsyn("README1.md", readMe);
-            // }
+            
         });
 };
 
@@ -130,7 +107,6 @@ async function init() {
         console.log(error);
     };
 };
-
 
 init();
 
