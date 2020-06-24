@@ -2,7 +2,7 @@
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-// const util1 = require("util")
+// const utils = require("utils")
 const generateMarkdown = require("./generateMarkdown")
 
 // const writeFileAsyn = util.promisify(fs.writeFile)
@@ -72,9 +72,9 @@ function userPrompt() {
             axios.
                 get(queryUrl)
                 .then(function (response) {
-                    console.log(response.data)
+                    console.log("response from api call:", response.data)
 
-                    console.log(response.data.avatar_url)
+                    console.log("avatar from axios call:", response.data.avatar_url)
 
                 })
                 // catches and handle error
