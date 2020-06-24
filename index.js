@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 // const utils = require("utils")
 const generateMarkdown = require("./generateMarkdown")
 
+
 // const writeFileAsyn = util.promisify(fs.writeFile)
 
 // prompt function to capture user data and github information
@@ -62,14 +63,9 @@ function userPrompt() {
             const queryUrl = `https://api.github.com/users/${userName}`;
 
             if (res) {
-                console.log("Success!");
-                // console.log(res)
-            } else if (res === "") {
-                console.log("You forgot to enter your User Name!");
-            }
 
-            // make request with user name
-            axios.
+                console.log("Success!", res);
+                axios.
                 get(queryUrl)
                 .then(function (response) {
                     console.log("response from api call:", response.data)
@@ -83,6 +79,26 @@ function userPrompt() {
                     console.log(error);
 
                 })
+                // console.log(res)
+            } else if (res === "") {
+                console.log("You forgot to enter your User Name!");
+            }
+
+            // make request with user name
+            // axios.
+            //     get(queryUrl)
+            //     .then(function (response) {
+            //         console.log("response from api call:", response.data)
+
+            //         console.log("avatar from axios call:", response.data.avatar_url)
+
+            //     })
+            //     // catches and handle error
+            //     .catch(function (error) {
+
+            //         console.log(error);
+
+            //     })
          
             // create write file function to generate readme file
                 const readMe = generateMarkdown(res);
