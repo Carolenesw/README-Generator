@@ -1,11 +1,9 @@
 const res = require('./index')
-const axios = require("axios");
  
 console.log("avatarUrl within generate markDown: ", res.avatar_url)
+
 // create function to generate answers based on user response
-// console.log(generateMarkdown(res))
  function generateMarkdown(res) {
-    // console.log("prompt response", res)
     return`
 # Project Title: ${res.title}
 
@@ -33,12 +31,13 @@ console.log("avatarUrl within generate markDown: ", res.avatar_url)
 # Contributing: 
 * ${res.collab}
 ## Testing: 
-* ${res.testing}
+<img src="asset/image/${res.testing}">
+<img src="asset/image/${res.testing}">
 ## Questions
-If you have any questions, please contact the GitHub user.           
-<img src="${res.picture}">  
+If you have any questions, please contact the GitHub user.   
 Email: ${res.email}
 
+<img src="${res.picture}">  
 `;
 
 };
