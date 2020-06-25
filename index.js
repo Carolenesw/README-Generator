@@ -13,17 +13,17 @@ function userPrompt() {
     return inquirer.prompt([
         {
             type: "input",
-            message: "Enter your GitHub username",
+            message: "Please enter your GitHub username",
             name: "username"
         },
         {
             type: "input",
-            message: "Enter your Project Title",
+            message: "Please enter your Project Title",
             name: "title"
         },
         {
             type: "input",
-            message: "Enter your Project Description",
+            message: "Please enter your Project Description",
             name: "description"
         },
         
@@ -35,14 +35,14 @@ function userPrompt() {
         },
         {
             type: "input",
-            message: "Enter usage instructions",
+            message: "Please enter usage instructions",
             name: "usage"
         },
         {
-            type: "input",
-            message: "Enter license instructions",
+            type: "list",
+            message: "What kind of license should your project have?",
             name: "license",
-            choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3"]
+            choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
         },
         {
             type: "input",
@@ -51,55 +51,55 @@ function userPrompt() {
         },
         {
             type: "input",
-            message: "Enter testing requirements",
+            message: "Please enter testing requirements?",
             name: "testing"
+        },
+        {
+            type: "input",
+            message: "Please enter your email address?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "Please enter your github image url?",
+            name: "picture"
         }
-       
+
     ])
 
         // use response to get url data 
         .then(res => {
+            // generateMarkdown(response)
             const userName = res.username;
             const queryUrl = `https://api.github.com/users/${userName}`;
 
             if (res) {
-
+                
                 console.log("Success!", res);
-                axios.
-                get(queryUrl)
-                .then(function (response) {
-                    console.log("response from api call:", response.data)
-
-                    console.log("avatar from axios call:", response.data.avatar_url)
-
-                })
-                // catches and handle error
-                .catch(function (error) {
-
-                    console.log(error);
-
-                })
                 // console.log(res)
             } else if (res === "") {
                 console.log("You forgot to enter your User Name!");
             }
 
             // make request with user name
-            // axios.
-            //     get(queryUrl)
-            //     .then(function (response) {
-            //         console.log("response from api call:", response.data)
+            axios.
+                get(queryUrl)
+                .then((response) => {
 
-            //         console.log("avatar from axios call:", response.data.avatar_url)
+                    console.log("Response from axios call:", response.data)
 
-            //     })
-            //     // catches and handle error
-            //     .catch(function (error) {
+                })
+                // catches and handle error
+                .catch((error) => {
 
-            //         console.log(error);
+                    console.log(error);
 
-            //     })
+                })
          
+//focus on axios api info and how its call generate markdown file, in indexjs and generate markdownjs and how to use the info 
+
+// review the order of the code/events (step by step method)
+
             // create write file function to generate readme file
                 const readMe = generateMarkdown(res);
                 fs.writeFile("README1.md", readMe, function(err) {
