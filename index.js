@@ -1,12 +1,9 @@
-// npm packages and files required 
+// npm packages and file(s) required 
 const fs = require("fs");
 const axios = require("axios");
 const inquirer = require("inquirer");
-// const utils = require("utils")
 const generateMarkdown = require("./generateMarkdown")
 
-
-// const writeFileAsyn = util.promisify(fs.writeFile)
 
 // prompt function to capture user data and github information
 function userPrompt() {
@@ -95,10 +92,6 @@ function userPrompt() {
                     console.log(error);
 
                 })
-         
-//focus on axios api info and how its call generate markdown file, in indexjs and generate markdownjs and how to use the info 
-
-// review the order of the code/events (step by step method)
 
             // create write file function to generate readme file
                 const readMe = generateMarkdown(res);
