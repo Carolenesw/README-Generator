@@ -25,19 +25,23 @@ console.log("avatarUrl within generate markDown: ", res.avatar_url)
 ## Installaion:
 * ${res.install}
 ## Usage: 
-* ${res.usage}
+<img src="asset/image/${res.usage}">
+
 ## License: 
 * ${res.license}
 # Contributing: 
 * ${res.collab}
 ## Testing: 
-<img src="asset/image/${res.testing}">
-<img src="asset/image/${res.testing}">
+* ${res.testing}
 ## Questions
 If you have any questions, please contact the GitHub user.   
 Email: ${res.email}
 
 <img src="${res.picture}">  
+
+<img src="asset/image/readme_img1.png">
+
+https://github.com/Carolenesw/README-Generator
 `;
 
 };
