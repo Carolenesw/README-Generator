@@ -1,9 +1,12 @@
 
-# Project Title: ghjkmhgf
+# Project Title: README.md
+
 ## Badge: 
-*
+
+<img alt="NPM" src="https://img.shields.io/npm/l/inquirer?logo=github&style=flat-square"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/carolenesw/README.md/total?logo=Github&logoColor=%23ff0000&style=flat-square">
+
 ## Description: 
-* ghfgdfs
+* Create a command-line application that dynamically generates a README.md from a user's input. The application will be invoked with node index.js in the command-line
 ## Table of Content: 
 
 * [Installation](#installation)  
@@ -13,19 +16,23 @@
 * [Tests](#tests)
 * [Questions](#questions)
 
-
 ## Installaion:
-* dfggf
+* npm i
 ## Usage: 
-* ghg
+<img src="asset/image/readme2.png">
+
 ## License: 
-* hgefg
+* MIT
 # Contributing: 
-* dgfh
+* Pull request and stars are always welcome. 
 ## Testing: 
-* dfg
+* N/A
 ## Questions
-If you have any questions, please contact the GitHub user.           
-<img src="undefined">  
-Email: undefined
-                
+If you have any questions, please contact the GitHub user.   
+Email: carolenesw@gmail.com
+
+<img src="https://avatars2.githubusercontent.com/u/55069434?v=4">  
+
+<img src="asset/image/readme_img1.png">
+
+https://github.com/Carolenesw/README-Generator
