@@ -36,3 +36,8 @@ Email: carolenesw@gmail.com
 <img src="asset/image/readme_img1.png">
 
 https://github.com/Carolenesw/README-Generator
+
+<video width="320" height="240" controls>
+  <source src="asset/README.mov" type="video/mov">
+Your browser does not support the video tag.
+</video>
